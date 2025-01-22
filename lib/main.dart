@@ -18,8 +18,28 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<String> _reviews = [
+    'Lorem ipsum dolor sit amet consectetur. Magnis nulla lectus mauris enim fermentum arcu porttitor purus. Erat quis dolor turpis amet tempor vel.',
+    'Lorem ipsum dolor sit amet consectetur. Magnis nulla lectus mauris enim fermentum arcu porttitor purus. Erat quis dolor turpis amet tempor vel.',
+    'Lorem ipsum dolor sit amet consectetur. Magnis nulla lectus mauris enim fermentum arcu porttitor purus. Erat quis dolor turpis amet tempor vel.',
+  ];
+
+  final TextEditingController _reviewController = TextEditingController();
+
+  void _addReview(String review) {
+    setState(() {
+      _reviews.add(review);
+    });
+    _reviewController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +54,10 @@ class HomePage extends StatelessWidget {
         ),
         title: const Text('Ulasan'),
       ),
-      body: ListView(
+      body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        children: List.generate(3, (index) {
+        itemCount: _reviews.length,
+        itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 16),
             child: Container(
@@ -76,9 +97,9 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        const Text(
-                          'Lorem ipsum dolor sit amet consectetur. Magnis nulla lectus mauris enim fermentum arcu porttitor purus. Erat quis dolor turpis amet tempor vel.',
-                          style: TextStyle(fontSize: 14),
+                        Text(
+                          _reviews[index],
+                          style: const TextStyle(fontSize: 14),
                         ),
                         const SizedBox(height: 16),
                         Row(
@@ -125,7 +146,7 @@ class HomePage extends StatelessWidget {
                                             'Kembali',
                                             style: TextStyle(
                                               color: Color.fromARGB(255, 0, 0,
-                                                  0), // Warna merah pada tombol Kembali
+                                                  0), // Warna hitam pada tombol Kembali
                                             ),
                                           ),
                                         ),
@@ -158,8 +179,45 @@ class HomePage extends StatelessWidget {
               ),
             ),
           );
-        }),
+        },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Menampilkan dialog untuk menambahkan ulasan baru
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('Tambahkan Ulasan'),
+                content: TextField(
+                  controller: _reviewController,
+                  decoration: const InputDecoration(hintText: 'Tulis ulasan'),
+                  maxLines: 3,
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('Batal'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      if (_reviewController.text.isNotEmpty) {
+                        _addReview(_reviewController.text);
+                        Navigator.of(context).pop();
+                      }
+                    },
+                    child: const Text('Kirim'),
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        child: const Icon(Icons.add),
+      ),  
     );
   }
 }
+ 
