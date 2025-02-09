@@ -31,6 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^6.2.1
+  font_awesome_flutter: ^10.2.1
+  intl: ^0.18.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -55,6 +57,25 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/bg1.png
+    - assets/images/bg2.png
+    - assets/images/background.png
+    - assets/images/gambar.jpg
+    - assets/images/bg3.png
+    - assets/images/intro2.jpg
+    - assets/images/intro3.jpg
+    - assets/images/profil.png
+    - assets/images/profile.jpg
+    - assets/images/Vector.png
+    - assets/images/gmail.png
+    - assets/images/google.png
+    - assets/images/whatsapp.png
+    - assets/images/home.png
+    - assets/images/customer-service.png
+    - assets/images/cs.png
+    - assets/images/bg4.png
+    - assets/images/bg5.png
+    - assets/images/bg6.png
+
     # The following line ensures that the Material Icons font is
     # included with your application, so that you can use the icons in
     # the material Icons class.
