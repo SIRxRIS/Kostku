@@ -110,7 +110,7 @@ class SearchScreen extends StatelessWidget {
                   itemCount: 4,
                   itemBuilder: (context, index) {
                     return _buildKostCard(
-                      'Hilal House',
+                      'Hilal Kost',
                       '4.000.000',
                       '9.0',
                       'assets/images/bg5.png',

@@ -115,6 +115,15 @@ class ProfileScreen extends StatelessWidget {
                       },
                     ),
                     ProfileMenuItem(
+                      icon: Icons.business_outlined, // Properti dengan outline
+                      title: 'Kelola Kostku',
+                      showChevron: true,
+                      iconColor: Colors.blue,
+                      onPressed: () {
+                        // Handle favorite action
+                      },
+                    ),
+                    ProfileMenuItem(
                       icon: Icons.payment_outlined,
                       title: 'Pembayaran',
                       showChevron: true,

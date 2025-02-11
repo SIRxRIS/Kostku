@@ -90,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 150),
+                    const SizedBox(height: 180),
                     Container(
                       padding: const EdgeInsets.symmetric(
                           vertical: 30, horizontal: 20),

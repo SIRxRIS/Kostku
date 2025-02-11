@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   // Tulisan kostku
                   Positioned(
-                    top: 100, // Sesuaikan posisi vertical sesuai kebutuhan
+                    top: 100,
                     child: RichText(
                       text: TextSpan(
                         children: [
@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 150),
+                    const SizedBox(height: 180),
                     Container(
                       padding: const EdgeInsets.symmetric(
                           vertical: 30, horizontal: 20),
@@ -111,7 +111,6 @@ class _LoginPageState extends State<LoginPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            // ... rest of your existing form code stays the same ...
                             TextFormField(
                               controller: _emailController,
                               decoration: InputDecoration(
