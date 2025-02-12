@@ -5,6 +5,7 @@ import 'history.dart';
 import 'home.dart';
 import "customer_service.dart";
 import "setting.dart";
+import "favorite.dart";
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -112,6 +113,11 @@ class ProfileScreen extends StatelessWidget {
                       iconColor: Colors.blue,
                       onPressed: () {
                         // Handle favorite action
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FavoriteScreen()),
+                        );
                       },
                     ),
                     ProfileMenuItem(
@@ -121,15 +127,6 @@ class ProfileScreen extends StatelessWidget {
                       iconColor: Colors.blue,
                       onPressed: () {
                         _showKostDialog(context);
-                      },
-                    ),
-                    ProfileMenuItem(
-                      icon: Icons.payment_outlined,
-                      title: 'Pembayaran',
-                      showChevron: true,
-                      iconColor: Colors.blue,
-                      onPressed: () {
-                        // Handle payment action
                       },
                     ),
                     ProfileMenuItem(

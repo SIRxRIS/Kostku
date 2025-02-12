@@ -119,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             TextFormField(
                               controller: _usernameController,
                               decoration: InputDecoration(
-                                labelText: "Username",
+                                labelText: "Full Name",
                                 labelStyle:
                                     GoogleFonts.roboto(color: Colors.grey),
                                 filled: true,

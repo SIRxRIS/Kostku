@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import "method-payment.dart";
 
-class BillDetailPage extends StatelessWidget {
+class BillDetail extends StatelessWidget {
   final String title;
   final String amount;
   final String imageUrl;
 
-  const BillDetailPage({
+  const BillDetail({
     Key? key,
     required this.title,
     required this.amount,
@@ -17,157 +18,160 @@ class BillDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tagihan'),
-        leading: GestureDetector(
-          onTap: () => Navigator.of(context).pop(),
-          child: Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'Detail Tagihan',
+          style: GoogleFonts.poppins(),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Gambar Tagihan
-            Center(
-              child: Image.network(
-                imageUrl,
-                height: 120,
-                errorBuilder: (context, error, stackTrace) {
-                  return Icon(Icons.image_not_supported,
-                      size: 80, color: Colors.grey);
-                },
+            // Header image with blue overlay
+            Container(
+              width: double.infinity,
+              height: 150,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/bg.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xFF10D3FF).withOpacity(0.7),
+                ),
               ),
             ),
-            SizedBox(height: 16),
 
-            // Nama Tagihan
-            Text(
-              title,
-              style: GoogleFonts.poppins(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-
-            // Jumlah Tagihan
-            Text(
-              'Jumlah Tagihan',
-              style: GoogleFonts.poppins(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Bulan Maret',
-              style: GoogleFonts.poppins(fontSize: 16),
-            ),
-            SizedBox(height: 16),
-            Text(
-              amount,
-              style: GoogleFonts.poppins(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            SizedBox(height: 24),
-
-            // Status Pembayaran
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Tagihan anda bulan ini lunas',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    color: Colors.green,
+            // Payment type selection
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Bayar Online',
+                    style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
                   ),
-                ),
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Colors.green.withOpacity(0.2),
-                  child: Icon(Icons.check, color: Colors.green),
-                ),
-              ],
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    width: 1,
+                    height: 24,
+                    color: Colors.grey,
+                  ),
+                  Text(
+                    'Bayar Offline',
+                    style: GoogleFonts.poppins(),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 16),
 
-            // Tautan Lihat Nota
-            GestureDetector(
-              onTap: () {
-                // Tambahkan aksi untuk melihat nota
-              },
-              child: Text(
-                'Lihat nota',
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: Colors.blue,
-                  decoration: TextDecoration.underline,
-                ),
+            // Bill details content
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Tagihan',
+                    style: GoogleFonts.poppins(color: Colors.grey),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Bulan Maret',
+                          style: GoogleFonts.poppins(),
+                        ),
+                        const Icon(Icons.keyboard_arrow_down),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Jumlah Tagihan',
+                    style: GoogleFonts.poppins(color: Colors.grey),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: const Color(0xFFD9D9D9),
+                      ),
+                    ),
+                    child: Text(
+                      'IDR. 1.300.000',
+                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  Center(
+                    child: Text(
+                      'Tagihan bulan Maret\nbelum dibayar',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Silakan pilih metode pembayaran di bawah ini. Jika mengalami kendala, hubungi layanan pelanggan kami.',
+                    style: GoogleFonts.poppins(color: Colors.grey),
+                  ),
+                  const SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Jatuh Tempo : 31 Maret 2025',
+                        style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PaymentMethodPage(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF10D3FF),
+                        ),
+                        child: Text(
+                          'Bayar',
+                          style: GoogleFonts.poppins(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
-        ),
-      ),
-
-      // Bottom Navigation Bar
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
-        elevation: 8,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  // Handle WhatsApp sharing
-                },
-                child: Image.asset(
-                  'assets/images/whatsapp.png',
-                  height: 24,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(Icons.error, color: Colors.red);
-                  },
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Handle Gmail sharing
-                },
-                child: Image.asset(
-                  'assets/images/gmail.png',
-                  height: 24,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(Icons.error, color: Colors.red);
-                  },
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Handle payment
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF00D0FF),
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Text(
-                  'Bayar',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

@@ -75,6 +75,10 @@ flutter:
     - assets/images/bg4.png
     - assets/images/bg5.png
     - assets/images/bg6.png
+    - assets/images/dana.png
+    - assets/images/gopay.png
+    - assets/images/bri.png
+    - assets/images/bni.png
 
     # The following line ensures that the Material Icons font is
     # included with your application, so that you can use the icons in

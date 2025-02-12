@@ -35,7 +35,7 @@ class BillsPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BillDetailPage(
+                  builder: (context) => BillDetail(
                     title: 'The Beach',
                     amount: 'IDR 1.300.000',
                     imageUrl: 'assets/images/bg2.png',

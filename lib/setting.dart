@@ -63,14 +63,6 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   _buildSettingItem(
                     context,
-                    icon: Icons.person_outline,
-                    title: 'Account',
-                    onTap: () {
-                      // Handle account tap
-                    },
-                  ),
-                  _buildSettingItem(
-                    context,
                     icon: Icons.info_outline,
                     title: 'About',
                     onTap: () {
@@ -83,14 +75,6 @@ class SettingsScreen extends StatelessWidget {
                     title: 'Notifications',
                     onTap: () {
                       // Handle notifications tap
-                    },
-                  ),
-                  _buildSettingItem(
-                    context,
-                    icon: Icons.logout,
-                    title: 'Log Out',
-                    onTap: () {
-                      // Handle log out tap
                     },
                   ),
                   _buildSettingItem(
