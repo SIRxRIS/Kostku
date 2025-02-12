@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: 'kost',
+                            text: 'Kost',
                             style: GoogleFonts.poppins(
                               fontSize: 36,
                               fontWeight: FontWeight.bold,

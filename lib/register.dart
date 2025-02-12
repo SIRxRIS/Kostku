@@ -60,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: 'kost',
+                            text: 'Kost',
                             style: GoogleFonts.poppins(
                               fontSize: 36,
                               fontWeight: FontWeight.bold,

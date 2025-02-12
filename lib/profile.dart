@@ -120,7 +120,7 @@ class ProfileScreen extends StatelessWidget {
                       showChevron: true,
                       iconColor: Colors.blue,
                       onPressed: () {
-                        // Handle favorite action
+                        _showKostDialog(context);
                       },
                     ),
                     ProfileMenuItem(
@@ -155,7 +155,7 @@ class ProfileScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SettingsPage()),
+                              builder: (context) => SettingsScreen()),
                         );
                       },
                     ),
@@ -196,7 +196,7 @@ class ProfileScreen extends StatelessWidget {
                     // Version info
                     Center(
                       child: Text(
-                        'Versi 1.2.22',
+                        'Versi 0.1',
                         style: GoogleFonts.poppins(
                           color: Colors.grey,
                           fontSize: 12,
@@ -254,6 +254,35 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void _showKostDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Kelola Kostku"),
+          content: Text(
+              "Anda belum mendaftar sebagai penyedia kost. Ingin mendaftar?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Tutup dialog
+              },
+              child: Text("Tidak"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                // Navigasi ke halaman pendaftaran penyedia kost
+                Navigator.pushNamed(context, "/registerKost");
+              },
+              child: Text("Daftar"),
+            ),
+          ],
+        );
+      },
     );
   }
 }
